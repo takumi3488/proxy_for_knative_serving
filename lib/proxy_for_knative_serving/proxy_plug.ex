@@ -2,7 +2,7 @@ defmodule ProxyForKnativeServing.ProxyPlug do
   import Plug.Conn
   use Plug.ErrorHandler
 
-  @host_ptn Regex.compile!("^(?<service>[a-z0-9-]+)(\\.[a-zA-Z0-9-_])+$")
+  @host_ptn Regex.compile!("^(?<service>[a-z0-9\-]+)(\.[a-zA-Z0-9\-_]+)+$")
 
   def init(options), do: options
 
@@ -66,7 +66,7 @@ defmodule ProxyForKnativeServing.ProxyPlug do
       "*" ->
         disallow_services
         |> String.split(",")
-        |> Enum.all?(fn s -> String.trim(s) != service end)
+        |> Enum.all?(fn s -> String.trim(s) !== service end)
 
       _ ->
         String.split(allow_services, ",") |> Enum.member?(service)
@@ -92,7 +92,7 @@ defmodule ProxyForKnativeServing.ProxyPlug do
           end
 
         _ ->
-          {404, "Service not found"}
+          {404, "Subdomain not specified from #{host}"}
       end
     end
   end
