@@ -2,7 +2,7 @@ defmodule ProxyForKnativeServing.ProxyPlug do
   import Plug.Conn
   use Plug.ErrorHandler
 
-  @host_ptn Regex.compile!("^(?<service>[a-z0-9\-]+)(\.[a-zA-Z0-9\-_]+)+$")
+  @host_ptn Regex.compile!("^(?<service>[a-z0-9\\-]+)(\\.[a-zA-Z0-9\\-_]+){2,3}")
 
   def init(options), do: options
 

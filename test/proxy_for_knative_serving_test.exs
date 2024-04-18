@@ -60,4 +60,15 @@ defmodule ProxyForKnativeServingTest do
     assert conn.status == 401
     assert conn.resp_body =~ "not allowed"
   end
+
+  test "404" do
+    System.put_env("WITHOUT_SERVICE_NAME", "false")
+
+    conn = %Plug.Conn{conn(:get, "/") | host: "example.com"}
+      |> ProxyForKnativeServing.ProxyPlug.call(@opts)
+
+    assert conn.state == :sent
+    assert conn.status == 404
+    assert conn.resp_body =~ "Subdomain not specified"
+  end
 end
