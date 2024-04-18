@@ -1,12 +1,12 @@
 # ProxyForKnativeServing
 
-This proxy is designed to free users from the hassles of Knative load balancing by converting simple URLs containing only one-level subdomains to Knative's private services specification URLs.
+This is designed to free users from the hassles of Knative load balancing by converting simple URLs containing only one-level subdomains to Knative's private services specification URLs.
 
-This application has the following features:
+ProxyForKnativeServing has the following features:
 
-  1. The subdomain is interpreted and proxied as it is as a Knative service name. Therefore, the user only needs to configure the minimum settings to connect to the application itself.
-  2. The application can be used as a white list or black list to restrict the Knative services to which the user can connect. This allows you to securely protect services that you want to keep truly private.
-  3. Written in Elixir, which has excellent parallel processing capabilities, this app can manage access to a large number of Knative services.
+  1. The subdomain is interpreted and proxied as it is as a Knative service name. Therefore, the user only needs to configure the minimum settings to connect to ProxyForKnativeServing.
+  2. ProxyForKnativeServing can be used as a white list or black list to restrict the Knative services to which the user can connect. This allows you to securely protect services that you want to keep truly private.
+  3. Written in Elixir, which has excellent parallel processing capabilities, ProxyForKnativeServing can manage access to a large number of Knative services.
 
 ## Specifications
 
